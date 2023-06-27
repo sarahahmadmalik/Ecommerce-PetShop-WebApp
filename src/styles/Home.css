@@ -1,0 +1,193 @@
+
+.trusted-banner ul{
+    display: flex;
+    list-style: none;
+    justify-content: center;
+}
+
+.icons{
+    font-size: 1.3rem;
+    color: #7e7c7c;
+}
+
+.trusted-banner div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 3rem 1.4rem;
+}
+
+
+.trusted-banner ul li{
+    color: #7e7c7c;;;
+    margin-left: 1rem;
+
+}
+
+.sales-banner{
+    background-image: url('../assets/sales-banner.png');
+    background-position: right;
+    height: 250px;
+    margin: 0 2rem;
+    border-radius: 40px;
+}
+
+.sales-banner h2, h3{
+    margin: .3rem 1rem;
+    font-family: 'Poppins';
+}
+
+.sales-banner h3{
+    margin-bottom: 1rem;
+}
+
+.banner-title{
+    padding: 2.5rem 2.5rem;
+    font-family: 'Poppins';
+}
+
+.shopBy{
+    padding: 2rem 1rem;
+}
+
+.shopBy-title h2{
+    font-family: 'Poppins';
+}
+
+.shopBy-title{
+    margin: .5rem 2rem;
+}
+
+.sales-banner2{
+    background-image: url('../assets/banner2.png');
+    background-position: center;
+    background-size: cover;
+    margin: 0 2rem;
+    border-radius: 40px;
+}
+
+.sales-banner2 h2,h3{
+    margin: .3rem 1rem;
+    font-family: 'Poppins';
+}
+
+.banner-title-2{
+    padding: 1rem 2.5rem;
+    font-family: 'Poppins';
+}
+
+.banner-title-2 h3, h2{
+    margin-bottom: .6rem;
+}
+
+.hygeine-banner{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: .5rem 3.5rem;
+    background-image: linear-gradient(to right top, #8bdcfb, #9ae0f7, #a8e4f4, #b7e8f1, #c6ebf0);
+    margin: 2.5rem 3rem;
+    border-radius: 20px;
+}
+
+.banner-illustration img{
+    width: 360px;
+    height: 360px;
+}
+
+.blue{
+    background-color: #11b3f8;
+}
+
+.banner-data{
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    padding: 1rem 3rem;
+    line-height: 29px;
+
+}
+
+.banner-data h2,h4{
+    margin-bottom: 2rem;
+}
+
+
+.imgs{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.imgs .list{
+    margin: 1rem 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: Poppins;
+}
+
+.list h4{
+    margin: 1rem 0rem;
+    font-size: 1.2rem;
+}
+
+.list a {
+    text-decoration: none;
+    color: black;
+}
+
+.img-list {
+    width: 150px; /* Adjust the width and height according to your needs */
+    height: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+   
+  }
+  
+  .img-list img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .cards{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 1rem;
+  }
+  .portion-label{
+    margin: .5rem 2.5rem;
+    font-size: 1.2rem;
+}
+  
+
+/* Responsive Styles */
+@media screen and (max-width: 768px) {
+    .trusted-banner ul{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .trusted-banner div{
+        margin: 1rem 1.4rem;
+    }
+  
+    .trusted-banner div > * {
+      flex-basis: 50%;
+    }
+  }
+  
+  @media screen and (max-width: 480px) {
+     .trusted-banner ul{
+        display: flex;
+        flex-direction: column;
+    }
+  
+    .trusted-banner div > * {
+      flex-basis: 100%;
+      margin: 1rem 0;
+    }
+  }

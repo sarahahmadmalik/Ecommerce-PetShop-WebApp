@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+*{
+    font-family: 'Varela Round';
+}
+.main{
+    background-image: linear-gradient(to right top, #ffe9cf, #fee9d4, #fceada, #f9eadf, #f6ebe4);
+
+}
+.home-banner{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-image: linear-gradient(to right top, #ffe9cf, #fee9d4, #fceada, #f9eadf, #f6ebe4);
+    padding: 3rem 4.4rem;
+    height: auto;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    border-radius: 20px;
+    overflow: hidden;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s;
+  }
+  
+  .search-bar:focus-within {
+    box-shadow: none;
+  }
+  
+  .search-bar .search-icon {
+    padding: 15px;
+    color: #888;
+  }
+  
+  .search-bar input[type="text"] {
+    flex: 1;
+    padding: 15px 0;
+    border: none;
+    font-family: 'Varela Round', sans-serif;
+    outline: none;
+  }
+
+.banner-content{
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    margin: 0;
+}
+
+.banner-image{
+    padding: 2rem;
+}
+.banner-image img{
+    width: 40vw;
+}
+
+.banner-heading{
+    margin: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.banner-heading h1{
+    font-family: 'Varela Round', sans-serif;
+    font-size: 3.1rem;
+    padding: 2rem;
+}
+
+.banner-btn{
+    margin-left: 1rem;
+}
+
+.button {
+    position: relative;
+    overflow: hidden;
+    height: 3rem;
+    width: 160px;
+    padding: 0 1rem;
+    border-radius: 1.5rem;
+    background: #FF9B00;
+    background-size: 400%;
+    color: black;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;;
+  }
+
+  .button:hover::before {
+    transform: scaleX(1);
+  }
+
+  .button-content {
+    position: relative;
+    z-index: 1;
+    font-size: 1rem;
+  }
+
+  .button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: scaleX(0);
+    transform-origin: 0 50%;
+    width: 100%;
+    height: inherit;
+    border-radius: inherit;
+    background: linear-gradient(
+      82.3deg,
+      rgba(150, 93, 233, 1) 10.8%,
+      rgba(99, 88, 238, 1) 94.3%
+    );
+    transition: all 0.475s;
+  }
