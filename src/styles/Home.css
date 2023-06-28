@@ -117,6 +117,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-wrap: wrap;
 }
 
 .imgs .list{
@@ -157,6 +158,7 @@
     justify-content: center;
     align-items: center;
     padding: 2rem 1rem;
+    flex-wrap: wrap;
   }
   .portion-label{
     margin: .5rem 2.5rem;
@@ -165,22 +167,53 @@
   
 
 /* Responsive Styles */
-@media screen and (max-width: 768px) {
-    .trusted-banner ul{
+@media (min-width: 445px) and (max-width: 880px) {
+    /* .trusted-banner ul{
         display: flex;
         flex-direction: column;
     }
 
     .trusted-banner div{
+        border: 2px solid;
         margin: 1rem 1.4rem;
+        display: flex;
     }
   
     .trusted-banner div > * {
       flex-basis: 50%;
+    } */.trusted-banner{
+    margin: 1.5rem 1.8rem;
     }
+
+    .trusted-banner div{
+        margin: .7rem .7rem;
+    }
+    .trusted-banner ul li{
+        font-size: .7rem;
+    }
+
+    .icons{
+        font-size: 1rem;
+    }
+
+    .banner-illustration img{
+        width: 44vw;
+        height: 100%;
+    }
+
+    .banner-data button{
+        margin-left: -10px;
+    }
+
+    .hygeine-banner {
+        justify-content: space-between;
+        padding: .3rem;
+    }
+
+   
   }
   
-  @media screen and (max-width: 480px) {
+  @media  (min-width: 576px) and (max-width: 480px) {
      .trusted-banner ul{
         display: flex;
         flex-direction: column;
@@ -190,4 +223,23 @@
       flex-basis: 100%;
       margin: 1rem 0;
     }
+
+    .imgs {
+        flex-wrap: wrap;
+      }
+      
+      .imgs .list {
+        margin: 1rem;
+      }
+   
   }
+
+  
+  @media (max-width: 450px) {
+    .cards{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+ 

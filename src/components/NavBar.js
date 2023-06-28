@@ -40,9 +40,17 @@ function NavBar() {
           <img src={Logo} alt='Logo' />
         </div>
         <div className={`${isOpen ? 'menu-icon open' : 'menu-icon'}`} onClick={handleMenu}>
-
+        <div className='buttons responsive'>
+        <button id='cart-button' className='responsive-btn'>
+          <FontAwesomeIcon icon={faCartShopping} />
+          {cartCount > 0 && <span className="cart-count">{cartCount}</span>}
+        </button>
+        <button id='user-button responsive'>
+        <FontAwesomeIcon icon={faUser} />
+        </button>
+      </div>
           <img src={Hamburger} alt='button-icon' />
-
+        
         </div>
       </div>
       <div className='nav-menu'>

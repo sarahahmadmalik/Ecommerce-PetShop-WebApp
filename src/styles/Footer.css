@@ -1,7 +1,9 @@
+
+
 footer{
     display: flex;
     flex-direction: column;
-    background-color: #c7c8d1;
+    background-image: linear-gradient(to right top, #7db3c6, #98c4d4, #b3d5e1, #cee6ef, #e8f7fd);
 }
 .footer-container{
     display: flex;
@@ -51,7 +53,34 @@ footer{
 
 .copyright{
     text-align: left;
-    padding: 1rem 4.5rem;
+    padding: 1rem 2rem;
     border-top: 1px solid #7e7c7c;;
     font-family: 'Poppins';
-}
+    background-image: transparent;
+    height: 40px;
+    color: #5b5959;;
+    ;}
+
+    .copyright h4{
+        font-family: 'Poppins';
+        font-weight: lighter;
+    }
+/* Media Queries */
+@media screen and (min-width: 768px) {
+    .footer-container {
+      flex-direction: row;
+    }
+  
+    .footer-left .footer-column {
+      flex: 1 1 auto;
+    }
+  
+    .footer-brand {
+      text-align: left;
+    }
+  
+    .footer-left .footer-column:nth-child(2),
+    .footer-left .footer-column:nth-child(3) {
+      margin: 0.5rem;
+    }
+  }

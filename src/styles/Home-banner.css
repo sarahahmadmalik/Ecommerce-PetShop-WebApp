@@ -3,7 +3,7 @@
     font-family: 'Varela Round';
 }
 .main{
-    background-image: linear-gradient(to right top, #ffe9cf, #fee9d4, #fceada, #f9eadf, #f6ebe4);
+  background-image: linear-gradient(to right top, #ffe3c3, #ffe8cd, #ffedd7, #fff1e2, #fff6ec);
 
 }
 .home-banner{
@@ -11,9 +11,10 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background-image: linear-gradient(to right top, #ffe9cf, #fee9d4, #fceada, #f9eadf, #f6ebe4);
+    background-image: linear-gradient(to right top, #ffe3c3, #ffe8cd, #ffedd7, #fff1e2, #fff6ec);
     padding: 3rem 4.4rem;
     height: auto;
+    overflow: none;
 }
 
 .search-bar {
@@ -118,4 +119,36 @@
       rgba(99, 88, 238, 1) 94.3%
     );
     transition: all 0.475s;
+  }
+
+  @media screen and (max-width: 880px){
+    .banner-heading{
+      margin: .5rem;
+
+    }
+    .banner-heading h1{
+      font-size: 2rem;
+      padding: 2rem;
+  }
+
+  .banner-image img{
+    width: 45vw;
+}
+.banner-image{
+  padding: 1rem;
+}
+
+.home-banner{
+  padding: 2rem 1rem;
+}
+.button-content{
+  font-size: .8rem;
+}
+
+.button{
+  margin-left: .6rem;
+  width: 130px;
+  padding: 0;
+  height: 2.6rem;
+}
   }
