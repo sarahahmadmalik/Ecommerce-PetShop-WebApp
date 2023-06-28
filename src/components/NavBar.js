@@ -40,7 +40,9 @@ function NavBar() {
           <img src={Logo} alt='Logo' />
         </div>
         <div className={`${isOpen ? 'menu-icon open' : 'menu-icon'}`} onClick={handleMenu}>
+
           <img src={Hamburger} alt='button-icon' />
+
         </div>
       </div>
       <div className='nav-menu'>
