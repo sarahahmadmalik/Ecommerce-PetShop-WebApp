@@ -4,6 +4,7 @@ import Home from './pages/Home';
 import Shop from './pages/Shop';
 import VetenaryServices from './pages/VetenaryServices';
 import Pharmacy from './pages/Pharmacy';
+// import ProductInfo from './pages/ProductInfo';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
           <Route exact path="/" element={<Home />} />
           <Route path="/Shop" element={<Shop />} />
           <Route path="/VetenaryServices" element={<VetenaryServices />} />
+          {/* <Route path="/ProductInfo" element={<ProductInfo />} /> */}
           <Route path="/Pharmacy" element={<Pharmacy />} />
         </Routes>
       </BrowserRouter>

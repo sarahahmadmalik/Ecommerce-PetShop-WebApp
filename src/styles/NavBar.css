@@ -16,7 +16,7 @@ nav {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  height: 90px;
+  height: 70px;
   width: 100%;
   padding: 0px 30px;
   /* z-index: 999; */
@@ -35,8 +35,8 @@ nav {
 
 
 .logo img {
-  height: 80px;
-  width: 90px;
+  height: 60px;
+  width: 75px;
   cursor: pointer;
   margin: 0;
 
@@ -144,7 +144,8 @@ height: 100%;
   cursor: pointer;
 }
 
-.buttons :nth-child(2){
+
+.buttons :nth-of-type(2){
   border-left: 2px solid #b6b3b3bb;
 }
 
@@ -155,24 +156,31 @@ height: 100%;
   transition: box-shadow 0.2s ease-in;
 }
 
-.cart-logo {
+.buttons, .responsive{
   position: relative;
+}
+
+.cart-icon{
   display: inline-block;
 }
 
-.cart-logo .cart-icon {
-  margin-right: 5px;
+span{
+  border-left: none;
 }
 
 .cart-count {
   position: absolute;
-  top: -10px;
-  right: -10px;
+  top: 10px;
+  right: 90px;
   background-color: #FF0000;
   color: #FFF;
   font-size: 12px;
   padding: 4px 6px;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
   border-radius: 50%;
+  min-width: 23px;
+
 }
 
 
@@ -288,7 +296,13 @@ nav.fill .nav-elements .nav-item :hover:after {
     top: 105px;
   }
 
-
+  .logo img {
+    height: 48px;
+    width: 75px;
+    cursor: pointer;
+    margin: 0;
+  
+  }
 
   .nav-item {
     width: 100%;
@@ -308,7 +322,6 @@ nav.fill .nav-elements .nav-item :hover:after {
   .buttons.responsive{
     display: inline;
     margin-right: .5rem;
-   
   }
 
   .buttons.responsive button{

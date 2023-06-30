@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartShopping, faChevronDown, faUser } from "@fortawesome/free-solid-svg-icons"; // Import the necessary font awesome icons
 import { Link } from 'react-router-dom';
@@ -6,14 +6,14 @@ import Hamburger from '../assets/Hamburger.png';
 import Logo from '../assets/Logo.png';
 import '../styles/NavBar.css';
 import { library } from "@fortawesome/fontawesome-svg-core";
-
+import { CartContext } from '../components/CartContext';
 library.add(faCartShopping, faChevronDown, faUser); // Add the font awesome icons to the library
 
 function NavBar() {
   const [isOpen, setOpen] = useState(false);
   const [isDropdownOpen, setDropdownOpen] = useState(false);
   const [isShopHovered, setShopHovered] = useState(false);
-  const [cartCount, setCartCount] = useState(0); 
+  const { cartCount, setCartCount } = useContext(CartContext);
 
   const handleMenu = () => {
     setOpen(prevState => !prevState);
@@ -31,6 +31,7 @@ function NavBar() {
 
   const updateCartCount = (count) => {
     setCartCount(count);
+
   };
 
   return (
@@ -76,7 +77,7 @@ function NavBar() {
       </div>
       <div className='buttons'>
         <button id='cart-button'>
-          <FontAwesomeIcon icon={faCartShopping} />
+          <FontAwesomeIcon className='cart-icon' icon={faCartShopping} />
           {cartCount > 0 && <span className="cart-count">{cartCount}</span>}
         </button>
         <button id='user-button'>

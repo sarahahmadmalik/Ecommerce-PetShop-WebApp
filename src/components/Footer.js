@@ -96,7 +96,6 @@ const Footer = () => {
             </div>
             <div className='copyright'>
              <h4>Copyright © 2023 PetCare LLC</h4>
-   
             </div>
         </footer>
     );

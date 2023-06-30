@@ -1,4 +1,6 @@
-
+*{
+    font-family: sans-serif;
+}
 .trusted-banner ul{
     display: flex;
     list-style: none;
