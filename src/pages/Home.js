@@ -22,9 +22,8 @@ import Banners from '../components/Banners';
 import bannerImg from '../assets/illsutration2.png'
 import Footer from '../components/Footer';
 import Card from '../components/Card';
-import groomingImg from '../assets/grooming.jpg'
-import shotsImg from '../assets/vaccination.jpg'
-import trainImg from '../assets/training.jpg'
+import Services from '../components/Services';
+
 library.add(faTruckFast, faHeart, faBagShopping, faCreditCard, faTags);
 
 function Home() {
@@ -101,7 +100,7 @@ function Home() {
                 </ul>
             </div>
 
-            <Banners class1='sales-banner' class2='banner-title' title='Save $10 when you spend $50' content='on Free Same-Day Delivery orders through 7/4'/>
+            <Banners class1='sales-banner' class2='banner-title' title='Save $10 when you spend $50' content='on Free Same-Day Delivery orders through 7/4' btnTitle='Shop Now!'/>
 
             <div className='shopBy'>
                 <div className='shopBy-title'>
@@ -110,7 +109,7 @@ function Home() {
                 <ShopBy pets={pets}/>
             </div>
 
-            <Banners class1='sales-banner2' class2='banner-title-2' title='Protect your pets with affordable medications' content='Fleas and Tick Protection'/>
+            <Banners class1='sales-banner2' class2='banner-title-2' title='Protect your pets with affordable medications' content='Fleas and Tick Protection' btnTitle='View Pharmacy'/>
             <div className='hygeine-banner'>
                 <div className='banner-illustration'>
                     <img src={
@@ -125,20 +124,7 @@ function Home() {
                     <Button class1='button blue' class2='button-content' title='Shop Now'/>
                 </div>
             </div>
-
-            <div className='Services-portion'>
-                <div className='portion-label'>
-                    <h3>Pet Services</h3>
-                </div>
-                <div className='cards'>
-                    <Card image={groomingImg}
-                        title="Grooming"/>
-                    <Card image={shotsImg}
-                        title="Vacinations"/>
-                    <Card image={trainImg}
-                        title="Pet Trainings"/>
-                </div>
-            </div>
+            <Services/>
             <Footer/>
         </>
     )

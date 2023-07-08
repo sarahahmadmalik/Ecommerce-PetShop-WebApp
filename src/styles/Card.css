@@ -1,17 +1,93 @@
-.card {
-    width: 300px;
+.card{
+  position: relative;
+    width: 350px;
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    margin: 10px;
+    margin: 1rem;
     margin: 0 1.3rem;
     text-decoration: none;
     flex-grow: 1;
     flex-basis: 190px;
-   
+    height: 260px;
+    overflow-x:visible;
+    overflow-y: hidden;
+
+    transition: all 300ms ease-in-out; 
   }
+
+  .card::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 5px;
+    height: 260px;
+    background: linear-gradient(-45deg, rgba(248, 155, 41, 0.9) 0%, rgba(255, 15, 123, 0.9) 100%);
+    z-index: 0;
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.320, 1);
+  }
+
   
+.card:hover::before {
+  width: 100%;
+  height: 260px;
+}
+
+.card.expand:hover::before{
+ width: 5px;
+}
+
+.card.expand::before{
+width: 0;
+height: 0;
+}
+
+.card:hover {
+  box-shadow: none;
+}
+
+.card.expand:hover .content {
+  display: none;
+}
+
+.card:hover .content {
+  left: 0;
+  bottom: 0;
+
+  transform: translateX(0);
+}
+
+.content {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  padding: 1rem;
+  transition: all 300ms ease-in-out; 
+  z-index: 0;
+}
+
+.heading {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: .3rem;
+}
+
+.para {
+  font-size: 0.9rem;
+}
+
+
+
+div.expand{
+  height: auto;
+  transition: all 300ms ease-in-out;
+
+}
+
+
   .card-image {
     height: 200px;
     background-size: cover;
@@ -25,6 +101,7 @@
     padding: 10px;
     color: black;
   }
+
 
   @media (max-width: 450px) {
     .card{

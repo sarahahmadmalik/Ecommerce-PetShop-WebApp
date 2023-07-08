@@ -1,4 +1,4 @@
-
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
 
 footer{
     display: flex;
@@ -16,8 +16,8 @@ footer{
 }
 
 .footer-brand p{
+    font-family: 'Poppins';
     margin-top: 1rem;
-    font-weight: bold;
 }
 
 .footer-brand img{
