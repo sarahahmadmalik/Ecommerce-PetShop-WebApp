@@ -62,22 +62,7 @@ function NavBar() {
                             cartCount > 0 && <span className="cart-count">
                                 {cartCount}</span>
                         }
-                            {
-                            isDropdownOpen && Object.entries(cartItems).length > 0 && (
-                                <div className="dropdown">
-                                    <ul> {
-                                        Object.entries(cartItems).map(([itemId, quantity]) => {
-                                            return (
-                                                <li key={itemId}>
-                                                    <span>{quantity}x</span>
-                                                    <span>{itemId}</span>
-                                                </li>
-                                            );
-                                        })
-                                    } </ul>
-                                </div>
-                            )
-                        } </button>
+                        </button>
                         <button id='user-button responsive'>
                             <FontAwesomeIcon icon={faUser}/>
                         </button>
@@ -146,39 +131,49 @@ function NavBar() {
                         {cartCount}</span>
                 }
                     {
-                    isShopHovered && (
+                    isShopHovered &&
                         <div className="dropdown-cart">
-                            <ul> {
+                        <ul>
+                            {cartItems.length > 0 && (
                                 cartItems.map((item, index) => {
-                                    const {product, quantity} = item;
+                                    const { product, quantity } = item;
                                     return (
+                                        <>
                                         <li key={index}>
-                    
-                                            <div className='cart-drop-down' >
-                                            <div className='cart-drop-down-img'><img src={`${product.image}`}/></div>
-                                            <div className='cart-data'>
-                                              <h3>{product.title}</h3>
-                                              <p>Quantity: {quantity}</p>
+                                            <div className='cart-drop-down'>
+                                                <div className='cart-drop-down-img'>
+                                                    <img src={`${product.image}`}/>
+                                                </div>
+                                                <div className='cart-data'>
+                                                    <h3>{product.title}</h3>
+                                                    <p>Quantity: {quantity}</p>
+                                                </div>
+                                                <div className='price'>
+                                                    <div className='cart-price'>
+                                                        <p>${product.price}</p>
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <div className='price'> <div className='cart-price'> <p>${product.price}</p></div></div>
-                                           
-                                            </div>
-                                          
-                            
                                         </li>
+                                          <div>
+                                          <div className='total'>
+                                              <p>Items Price: ${cartTotal}</p>
+                                              <p>Shipping Cost: $11.21</p>
+                                              <p>Total: ${cartTotal}</p>
+                                          </div>
+                                      </div>
+                                     </>
                                     );
                                 })
-
-                            } <div>
-                              <div className='total'>  
-                              <p>Items Price: ${cartTotal}</p>
-                            <p>Shipping Cost: $11.21</p>
-                            <p>Total: ${cartTotal}</p></div>
-                          
-                          </div></ul>
-
-                        </div>
-                    )
+                            )}
+                            { cartItems.length === 0 && (
+                                <div className='empty-cart'><p>No items in cart</p></div>
+                            )    
+                            }
+                            
+                        </ul>
+                    </div>
+                    
                 } </button>
                 <button id='user-button'
                     onClick={handlePage}>

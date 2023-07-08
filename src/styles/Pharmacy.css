@@ -1,0 +1,70 @@
+.curved {
+    position: relative;
+    background-image: linear-gradient(to left bottom, rgba(70, 73, 89, 0.559), rgba(82, 83, 96, 0.454), rgba(89, 90, 100, 0.427), rgba(95, 95, 105, 0.386), rgba(97,97,106,0.62)), url('../assets/pharmacy-banner1.jpg');
+    background-position: bottom;
+    background-size: cover;
+    height: 65vh;
+    z-index: -1;
+    padding: 2rem 0 0 0 ;
+  }
+  
+  .curved::after {
+    content: '';
+    border-top-left-radius: 50% 100%;
+    border-top-right-radius: 50% 100%;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: #fff;
+    height: 21%;
+  }
+
+  #curved h2{
+    margin: .5rem 4rem;
+    color: rgba(227, 227, 227, 0.947);
+    font-size: 2.4rem;
+    letter-spacing: 2px;
+}
+
+#curved h3{
+  letter-spacing: 2px;
+    text-align: center;
+    font-family: 'Caveat';
+}
+
+#curved .skewed-title{
+    margin-top: 1rem;
+    margin-left: 4rem;
+    margin-bottom: 1rem;
+    padding: 2px;
+    background-color: #fc9c0cf0;
+    width: 425px;
+}
+
+.Listings-pharmacy{
+    margin: -3.5rem 3rem 2rem 3rem;
+    text-align: center;
+    font-size: 2rem;
+    z-index: 999999999;
+}
+
+
+.Listings-pharmacy h1 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .Listings-pharmacy .listings-btns button {
+    padding: 10px 20px;
+    margin: 5px;
+    font-size: 16px;
+    background-color: #eee;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .Listings-pharmacy .listings-btns button:hover {
+    background-color: #ccc;
+  }

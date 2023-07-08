@@ -354,6 +354,11 @@ nav.fill .nav-elements .nav-item :hover:after {
   margin-bottom: .4rem;
 }
 
+.empty-cart p{
+  font-size: 1rem;
+  font-weight: lighter;
+}
+
 @media screen and (max-width: 880px) {
   nav {
     flex-direction: column;
