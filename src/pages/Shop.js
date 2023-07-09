@@ -11,33 +11,48 @@ import Banners from "../components/Banners";
 
 function Shop() {
   const [selectedPet, setSelectedPet] = useState("all");
-  const { cartCount, setCartCount, cartItems, addToCart } = useContext(CartContext);
+  const { cartItems, addToCart } = useContext(CartContext);
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [customerAddress, setCustomerAddress] = useState('');
   const [isLoading, setIsLoading] = useState(true);
   const [quantity, setQuantity] = useState(1);
-
+  
+  const getAddress = async (latitude, longitude) => {
+    try {
+      const response = await fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${longitude},${latitude}.json?access_token=YOUR_ACCESS_TOKEN`);
+      if (response.ok) {
+        const data = await response.json();
+        const address = data.features[0].place_name;
+        return address;
+      } else {
+        throw new Error('Failed to fetch address');
+      }
+    } catch (error) {
+      console.error('Error fetching address:', error);
+      return 'Unknown';
+    }
+  };
   useEffect(() => {
     const fetchLocation = async () => {
       try {
-        const response = await fetch('https://ipgeolocationapi.com/json/');
-        if (response.ok) {
-          const data = await response.json();
-          const { city, region, country_name } = data;
-          const address = `${city}, ${region}, ${country_name}`;
-          setCustomerAddress(address);
-        } else {
-          throw new Error('Failed to fetch location');
-        }
+        const position = await new Promise((resolve, reject) => {
+          navigator.geolocation.getCurrentPosition(resolve, reject);
+        });
+
+        const { latitude, longitude } = position.coords;
+        const address = await getAddress(latitude, longitude);
+        setCustomerAddress(address);
       } catch (error) {
         console.error('Error fetching location:', error);
+        setCustomerAddress('Unknown');
       } finally {
         setIsLoading(false);
       }
     };
-  
+
     fetchLocation();
   }, []);
+  
 
   let lines = "";
   if (selectedProduct) {
@@ -68,24 +83,12 @@ function Shop() {
     }
   };
 
-  const handleAddToCart = (productId, productCat) => {
-    setCartCount((prevCount) => prevCount + 1);
-    addToCart(productId, productCat, quantity)
+  const handleAddToCart = (productId, productCat, productType) => {
+    addToCart(productId, productCat, quantity, productType)
     // Reset the quantity to 1
     setQuantity(1);
   };
 
-  // Calculate the total price based on the cartItems
-  const getTotalPrice = () => {
-    let totalPrice = 0;
-    for (const [productId, quantity] of Object.entries(cartItems)) {
-      const product = products.find((p) => p.id === productId);
-      if (product) {
-        totalPrice += product.price * quantity;
-      }
-    }
-    return totalPrice.toFixed(2);
-  };
 
   // Filter products based on selected pet type
   const filteredProducts =
@@ -136,7 +139,7 @@ function Shop() {
                   <h3 className="product-title"  onClick={() => handleProductClick(product)}>{product.title}</h3>
                   <div className="btn-price">
                   <p className="product-price"  onClick={() => handleProductClick(product)}>${product.price}</p>
-                    <button className="add-to-cart" onClick={() => handleAddToCart(product.id, product.category)}>
+                    <button className="add-to-cart" onClick={() => handleAddToCart(product.id, product.category, 'Shop')}>
                     <svg class="svg-icon" viewBox="0 0 20 20">
       <path d="M17.72,5.011H8.026c-0.271,0-0.49,0.219-0.49,0.489c0,0.271,0.219,0.489,0.49,0.489h8.962l-1.979,4.773H6.763L4.935,5.343C4.926,5.316,4.897,5.309,4.884,5.286c-0.011-0.024,0-0.051-0.017-0.074C4.833,5.166,4.025,4.081,2.33,3.908C2.068,3.883,1.822,4.075,1.795,4.344C1.767,4.612,1.962,4.853,2.231,4.88c1.143,0.118,1.703,0.738,1.808,0.866l1.91,5.661c0.066,0.199,0.252,0.333,0.463,0.333h8.924c0.116,0,0.22-0.053,0.308-0.128c0.027-0.023,0.042-0.048,0.063-0.076c0.026-0.034,0.063-0.058,0.08-0.099l2.384-5.75c0.062-0.151,0.046-0.323-0.045-0.458C18.036,5.092,17.883,5.011,17.72,5.011z"></path>
       <path d="M8.251,12.386c-1.023,0-1.856,0.834-1.856,1.856s0.833,1.853,1.856,1.853c1.021,0,1.853-0.83,1.853-1.853S9.273,12.386,8.251,12.386z M8.251,15.116c-0.484,0-0.877-0.393-0.877-0.874c0-0.484,0.394-0.878,0.877-0.878c0.482,0,0.875,0.394,0.875,0.878C9.126,14.724,8.733,15.116,8.251,15.116z"></path>

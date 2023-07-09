@@ -15,7 +15,7 @@ const Footer = () => {
                     <div className="footer-brand">
                         <img src={Logo}
                             alt="Logo"/>
-                        <p>Pakistan's Best Selling Pet Shop</p>
+                        <p>Best Selling Pet Shop</p>
                     </div>
                     <div className="footer-social-icons">
                         <FontAwesomeIcon className='faIcons'

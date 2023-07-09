@@ -7,6 +7,8 @@ import Pharmacy from './pages/Pharmacy';
 // import ProductInfo from './pages/ProductInfo';
 import { Helmet } from 'react-helmet';
 import LoginPage from './pages/LoginPage';
+import Cart from './components/Cart';
+import Checkout from './components/Checkout';
 
 function App() {
   return (
@@ -22,6 +24,8 @@ function App() {
           <Route path="/VetenaryServices" element={<VetenaryServices />} />
           {/* <Route path="/ProductInfo" element={<ProductInfo />} /> */}
           <Route path="/Pharmacy" element={<Pharmacy />} />
+          <Route path="/Cart" element={<Cart />} />
+          <Route path="/Checkout" element={<Checkout/>} />
           <Route path="/Login" element={<LoginPage />} />
         </Routes>
       </BrowserRouter>

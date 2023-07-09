@@ -1,12 +1,21 @@
 import React, { createContext, useState, useEffect } from "react";
 import { products } from "../Data/Product";
+import { PharmProducts } from "../Data/PharmProducts";
 export const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState([]);
-  const [cartCount, setCartCount] = useState(0);
-  const addToCart = (itemId, productCat, quantity) => {
-    const category = products.find((cat) => cat.category === productCat);
+  const [shippingCost, setShippingCost] = useState(6.21);
+  
+  const addToCart = (itemId, productCat, quantity, productType) => {
+    let category ;
+    if(productType === 'Shop'){
+      category = products.find((cat) => cat.category === productCat);
+    }
+    else if(productType === 'Pharmacy'){
+      category = PharmProducts.find((cat) => cat.category === productCat);
+    }
+    
     if (category) {
       const product = category.products.find((p) => p.id === itemId);
   
@@ -15,24 +24,34 @@ export const CartProvider = ({ children }) => {
           const itemIndex = prevCartItems.findIndex((item) => item.product.id === itemId);
           if (itemIndex !== -1) {
             // If item already exists in cart, update the quantity
-            return prevCartItems.map((item, index) => {
+            const updatedCartItems = prevCartItems.map((item, index) => {
               if (index === itemIndex) {
+                const newQuantity = item.quantity + quantity;
+                if (newQuantity <= 0) {
+                  // Do nothing if resulting quantity is zero or less
+                  return item;
+                }
                 return {
                   ...item,
-                  quantity: item.quantity + quantity,
+                  quantity: newQuantity,
                 };
               }
               return item;
             });
+            console.log(updatedCartItems); // Log updatedCartItems
+            return updatedCartItems;
           } else {
             // If item doesn't exist in cart, add it as a new item
-            return [
-              ...prevCartItems,
-              {
-                product: product,
-                quantity: quantity,
-              },
-            ];
+            if (quantity <= 0) {
+              // Do nothing if quantity is zero or less
+              return prevCartItems;
+            }
+            const newCartItem = {
+              product: product,
+              quantity: quantity,
+            };
+            const updatedCartItems = [...prevCartItems, newCartItem]; // Log updatedCartItems
+            return updatedCartItems;
           }
         });
       }
@@ -48,20 +67,19 @@ export const CartProvider = ({ children }) => {
 
   const removeFromCart = (itemId) => {
     setCartItems((prevCartItems) => {
-      const updatedCartItems = { ...prevCartItems };
-      delete updatedCartItems[itemId];
+      const updatedCartItems = prevCartItems.filter((item) => item.product.id !== itemId);
       return updatedCartItems;
     });
   };
-
+  
   const clearCart = () => {
-    setCartItems({});
+    setCartItems([]);
   };
 
 
   const cartTotal = cartItems.reduce((accumulator, item) => {
     const { product, quantity } = item;
-    const itemPrice = product ? product.price : 0;
+    const itemPrice = product ? Number(product.price) : 0; // Convert price to a number
     const totalPrice = itemPrice * quantity;
     return accumulator + totalPrice;
   }, 0).toFixed(2);
@@ -74,10 +92,11 @@ export const CartProvider = ({ children }) => {
         addToCart,
         removeFromCart,
         clearCart,
-        cartCount,
+      
         cartTotal,
-        setCartCount,
-        setCartItems
+      
+        setCartItems,
+        shippingCost
       }}
     >
       {children}

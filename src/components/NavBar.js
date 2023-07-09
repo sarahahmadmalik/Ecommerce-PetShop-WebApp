@@ -13,7 +13,7 @@ function NavBar() {
     const [isOpen, setOpen] = useState(false);
     const [isDropdownOpen, setDropdownOpen] = useState(false);
     const [isShopHovered, setShopHovered] = useState(false);
-    const {cartItems, cartCount, setCartCount, cartTotal} = useContext(CartContext);
+    const {cartItems, cartTotal} = useContext(CartContext);
     const navigate = useNavigate();
 
     const handleMenu = () => {
@@ -22,22 +22,19 @@ function NavBar() {
     const handleDropDown = () => {
         setDropdownOpen(!isDropdownOpen);
     }
-    const showConsole = () => {
-        console.log(Object.entries(cartItems).length)
-    }
+
     const handleShopHover = () => {
         setShopHovered(prevState => !prevState);
     }
 
-
-    const updateCartCount = (count) => {
-        setCartCount(count);
-    };
-
-    console.log(cartItems)
-
-    const handlePage = () => {
-        navigate('/Login');
+    const handlePage = (goto) => {
+        if(goto === 'Login'){
+            navigate('/Login');
+        }
+        else{
+            navigate('../Cart')
+        }
+       
     };
 
     return (
@@ -57,10 +54,10 @@ function NavBar() {
                         <button id='cart-button' className='responsive-btn'
                             onMouseEnter={handleShopHover}
                             onMouseLeave={handleShopHover}
-                            onClick={showConsole}>
+                            >
                             <FontAwesomeIcon icon={faCartShopping}/> {
-                            cartCount > 0 && <span className="cart-count">
-                                {cartCount}</span>
+                            cartItems.length > 0 && <span className="cart-count">
+                                { cartItems.length}</span>
                         }
                         </button>
                         <button id='user-button responsive'>
@@ -124,11 +121,12 @@ function NavBar() {
             <div className='buttons'>
                 <button id='cart-button'
                     onMouseEnter={handleShopHover}
-                    onMouseLeave={handleShopHover}>
+                    onMouseLeave={handleShopHover}
+                    onClick={() => handlePage('Cart')}>
                     <FontAwesomeIcon className='cart-icon'
                         icon={faCartShopping}/> {
-                    cartCount > 0 && <span className="cart-count">
-                        {cartCount}</span>
+                            cartItems.length > 0 && <span className="cart-count">
+                        { cartItems.length}</span>
                 }
                     {
                     isShopHovered &&
@@ -156,19 +154,19 @@ function NavBar() {
                                             </div>
                                         </li>
                                           <div>
-                                          <div className='total'>
-                                              <p>Items Price: ${cartTotal}</p>
-                                              <p>Shipping Cost: $11.21</p>
-                                              <p>Total: ${cartTotal}</p>
-                                          </div>
                                       </div>
                                      </>
                                     );
                                 })
                             )}
-                            { cartItems.length === 0 && (
+                            { cartItems.length === 0 ?  (
                                 <div className='empty-cart'><p>No items in cart</p></div>
-                            )    
+                            )  : ( 
+                            <div className='total'>
+                            <p>Items Price: ${cartTotal}</p>
+                            <p>Shipping Cost: $11.21</p>
+                            <p>Total: ${cartTotal}</p>
+                        </div>)  
                             }
                             
                         </ul>
@@ -176,7 +174,7 @@ function NavBar() {
                     
                 } </button>
                 <button id='user-button'
-                    onClick={handlePage}>
+                    onClick={() => handlePage('Login')}>
                     <FontAwesomeIcon icon={faUser}/>
                 </button>
             </div>
