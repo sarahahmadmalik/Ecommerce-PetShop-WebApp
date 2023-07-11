@@ -1,152 +1,155 @@
-*{
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+* {
     font-family: sans-serif;
-}
-.trusted-banner ul{
+  }
+  
+  .trusted-banner ul {
     display: flex;
     list-style: none;
     justify-content: center;
-}
-
-.icons{
+  }
+  
+  .icons {
     font-size: 1.3rem;
     color: #7e7c7c;
-}
-
-.trusted-banner div{
+  }
+  
+  .trusted-banner div {
     display: flex;
     align-items: center;
     justify-content: center;
     margin: 3rem 1.4rem;
-}
-
-
-.trusted-banner ul li{
-    color: #7e7c7c;;;
+  }
+  
+  .trusted-banner ul li {
+    color: #7e7c7c;
     margin-left: 1rem;
-
-}
-
-.sales-banner{
+  }
+  
+  .sales-banner {
     background-image: url('../assets/sales-banner.png');
     background-position: right;
     height: 250px;
     margin: 0 2rem;
     border-radius: 40px;
-}
-
-.sales-banner h2, h3{
-    margin: .3rem 1rem;
+  }
+  
+  .sales-banner h2,
+  .sales-banner h3 {
+    margin: 0.3rem 1rem;
     font-family: 'Poppins';
-}
-
-.sales-banner h3{
+  }
+  
+  .sales-banner h3 {
     margin-bottom: 1rem;
-}
-
-.banner-title{
+  }
+  
+  .banner-title {
     padding: 2.5rem 2.5rem;
     font-family: 'Poppins';
-}
-
-.shopBy{
+  }
+  
+  .shopBy {
     padding: 2rem 1rem;
-}
-
-.shopBy-title h2{
+  }
+  
+  .shopBy-title h2 {
     font-family: 'Poppins';
-}
-
-.shopBy-title{
-    margin: .5rem 2rem;
-}
-
-.sales-banner2{
+  }
+  
+  .shopBy-title {
+    margin: 0.5rem 2rem;
+  }
+  
+  .sales-banner2 {
     background-image: url('../assets/banner2.png');
     background-position: center;
     background-size: cover;
     margin: 0 2rem;
     border-radius: 40px;
-}
-
-.sales-banner2 h2,h3{
-    margin: .3rem 1rem;
+  }
+  
+  .sales-banner2 h2,
+  .sales-banner2 h3 {
+    margin: 0.3rem 1rem;
     font-family: 'Poppins';
-}
-
-.banner-title-2{
+  }
+  
+  .banner-title-2 {
     padding: 1rem 2.5rem;
     font-family: 'Poppins';
-}
-
-.banner-title-2 h3, h2{
-    margin-bottom: .6rem;
-}
-
-.hygeine-banner{
+  }
+  
+  .banner-title-2 h3,
+  .banner-title-2 h2 {
+    margin-bottom: 0.6rem;
+  }
+  
+  .hygeine-banner {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    padding: .5rem 3.5rem;
+    padding: 0.5rem 3.5rem;
     background-image: linear-gradient(to right top, #8bdcfb, #9ae0f7, #a8e4f4, #b7e8f1, #c6ebf0);
     margin: 2.5rem 3rem;
     border-radius: 20px;
-}
-
-.banner-illustration img{
+   
+  }
+  
+  .banner-illustration img {
     width: 360px;
     height: 360px;
-}
-
-.blue{
+  }
+  
+  .blue {
     background-color: #11b3f8;
-}
-
-.banner-data{
+  }
+  
+  .banner-data {
     display: flex;
     flex-direction: column;
     align-items: left;
     padding: 1rem 3rem;
     line-height: 29px;
-
-}
-
-.banner-data h2,h4{
+    font-family: 'Varela Round', sans-serif;
+  }
+  
+  .banner-data h2,
+  .banner-data h4 {
     margin-bottom: 2rem;
-}
-
-
-.imgs{
+  }
+  
+  .imgs {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
-}
-
-.imgs .list{
+  }
+  
+  .imgs .list {
     margin: 1rem 2rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     font-family: Poppins;
-}
-
-.list h4{
+  }
+  
+  .list h4 {
     margin: 1rem 0rem;
     font-size: 1.2rem;
-}
-
-.list a {
+  }
+  
+  .list a {
     text-decoration: none;
     color: black;
-}
-
-.img-list {
+  }
+  
+  .img-list {
     width: 150px; /* Adjust the width and height according to your needs */
     height: 150px;
     border-radius: 50%;
     overflow: hidden;
-   
   }
   
   .img-list img {
@@ -154,94 +157,113 @@
     height: 100%;
     object-fit: cover;
   }
-
-  .cards{
+  
+  .cards {
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 2rem 1rem;
     flex-wrap: wrap;
   }
-  .portion-label{
-    margin: .5rem 2.5rem;
+  
+  .portion-label {
+    margin: 0.5rem 2.5rem;
     font-size: 1.2rem;
-}
-  
-
-/* Responsive Styles */
-@media (min-width: 445px) and (max-width: 880px) {
-    /* .trusted-banner ul{
-        display: flex;
-        flex-direction: column;
-    }
-
-    .trusted-banner div{
-        border: 2px solid;
-        margin: 1rem 1.4rem;
-        display: flex;
-    }
-  
-    .trusted-banner div > * {
-      flex-basis: 50%;
-    } */.trusted-banner{
-    margin: 1.5rem 1.8rem;
-    }
-
-    .trusted-banner div{
-        margin: .7rem .7rem;
-    }
-    .trusted-banner ul li{
-        font-size: .7rem;
-    }
-
-    .icons{
-        font-size: 1rem;
-    }
-
-    .banner-illustration img{
-        width: 44vw;
-        height: 100%;
-    }
-
-    .banner-data button{
-        margin-left: -10px;
-    }
-
-    .hygeine-banner {
-        justify-content: space-between;
-        padding: .3rem;
-    }
-
-   
   }
   
-  @media  (min-width: 576px) and (max-width: 480px) {
-     .trusted-banner ul{
-        display: flex;
-        flex-direction: column;
+  /* Responsive Styles */
+  
+  @media (min-width: 445px) and (max-width: 880px) {
+    .trusted-banner {
+      margin: 1.5rem 1.8rem;
+    }
+  
+    .trusted-banner div {
+      margin: 0.7rem 0.7rem;
+    }
+  
+    .trusted-banner ul li {
+      font-size: 0.7rem;
+    }
+  
+    .icons {
+      font-size: 1rem;
+    }
+
+  
+    .banner-illustration img {
+      width: 44vw;
+      height: 100%;
+    }
+  
+    .banner-data button {
+      margin-left: -10px;
+    }
+  
+    .hygeine-banner {
+      justify-content: space-between;
+      padding: 0.3rem;
+    }
+  }
+  
+  @media (min-width: 576px) and (max-width: 480px) {
+    .trusted-banner ul {
+      display: flex;
+      flex-direction: column;
     }
   
     .trusted-banner div > * {
       flex-basis: 100%;
       margin: 1rem 0;
     }
-
+  
     .imgs {
-        flex-wrap: wrap;
-      }
-      
-      .imgs .list {
-        margin: 1rem;
-      }
-   
+      flex-wrap: wrap;
+    }
+  
+    .imgs .list {
+      margin: 1rem;
+    }
   }
-
   
   @media (max-width: 450px) {
-    .cards{
+    .cards {
       display: flex;
       flex-direction: column;
       align-items: center;
     }
   }
- 
+  
+  /* Large Screens */
+  @media (min-width: 1200px) {
+    .trusted-banner {
+      margin: 3rem 4rem;
+    }
+  
+    .trusted-banner div {
+      margin: 1.5rem 1.4rem;
+    }
+  
+    .trusted-banner ul li {
+      font-size: 1rem;
+    }
+  
+    .banner-title-1 h1{
+        font-size: 3.7rem;
+    }
+    .sales-banner,
+    .sales-banner2 {
+      margin: 0 4rem;
+    }
+  
+    .banner-title,
+    .banner-title-2,
+    .hygeine-banner {
+      padding: 4rem 6rem;
+    }
+  
+    .portion-label {
+      margin: 1rem 4rem;
+    }
+  }
+  
