@@ -1,6 +1,12 @@
 import React from 'react';
 import '../styles/NotificationCard.css'
+import { useNavigate } from 'react-router-dom';
 const NotificationCard = () => {
+  const navigation = useNavigate();
+
+  const handlePage =() =>{
+    navigation('../');
+  }
   return (
   
     <div className="Notify-card">
@@ -32,7 +38,7 @@ const NotificationCard = () => {
         </div>
       </div>
       <div className="actions">
-        <button type="button" className="history">
+        <button type="button" className="history" onClick={handlePage}>
           Go back to Home
         </button>
       </div>

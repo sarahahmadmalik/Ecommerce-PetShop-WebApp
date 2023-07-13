@@ -21,7 +21,7 @@ import ShopBy from '../components/ShopBy';
 import Banners from '../components/Banners';
 import bannerImg from '../assets/illsutration2.png'
 import Footer from '../components/Footer';
-import Card from '../components/Card';
+
 import Services from '../components/Services';
 
 library.add(faTruckFast, faHeart, faBagShopping, faCreditCard, faTags);

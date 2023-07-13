@@ -53,6 +53,7 @@ function Shop() {
     const handleProductClick = (product) => {
         window.scrollTo({top: 120, behavior: 'smooth'});
         setSelectedProduct(product);
+        
     };
 
     const handleGoBack = () => {

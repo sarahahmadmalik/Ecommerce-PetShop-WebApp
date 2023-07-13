@@ -25,7 +25,7 @@ const Checkout = () => {
 
   const pageNavigate = useNavigate();
 
-  const { cartItems, cartTotal, shippingCost } = useContext(CartContext);
+  const { cartItems, cartTotal, shippingCost, clearCart } = useContext(CartContext);
   const [activeStage, setActiveStage] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
   const [isOrderPlaced, setIsOrderPlaced] = useState(false);
@@ -59,6 +59,7 @@ const Checkout = () => {
      
     }, 2000);
 
+    clearCart();
     
   }
 
