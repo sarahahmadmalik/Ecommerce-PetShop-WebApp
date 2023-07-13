@@ -5,6 +5,7 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {library} from "@fortawesome/fontawesome-svg-core";
 import {faStethoscope, faPaw, faHeart, faMedkit} from "@fortawesome/free-solid-svg-icons";
 import Footer from '../components/Footer';
+import ImageSlider from '../components/ImageSlider';
 
 library.add(faStethoscope, faPaw, faHeart, faMedkit);
 
@@ -47,6 +48,7 @@ function VetenaryServices() {
             <div className='services-banner'>
             </div>
             <Services/>
+            <ImageSlider/>
             </div>
             <Footer/>
         </>

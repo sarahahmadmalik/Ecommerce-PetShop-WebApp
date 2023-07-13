@@ -1,8 +1,10 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import '../styles/Checkout.css';
 import Cart from '../components/Cart'
 import { CartContext } from './CartContext';
 import { useNavigate } from 'react-router-dom';
+import LazyLoader from './LazyLoader';
+import NotificationCard from './NotificationCard';
 
 const Checkout = () => {
   const [formData, setFormData] = useState({
@@ -13,12 +15,21 @@ const Checkout = () => {
     city: '',
     postalCode: '',
     phoneNumber: '',
+    shippingMethod: '',
+    paymentMethod: '', // New payment method field
+    cardNumber: '', // New card number field
+    cardHolderName: '', // New card holder name field
+    expirationDate: '', // New expiration date field
+    cvv: '' // New CVV field
   });
 
   const pageNavigate = useNavigate();
 
   const { cartItems, cartTotal, shippingCost } = useContext(CartContext);
   const [activeStage, setActiveStage] = useState(0);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isOrderPlaced, setIsOrderPlaced] = useState(false);
+  const [showNotification, setShowNotification] = useState(false);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -37,6 +48,30 @@ const Checkout = () => {
     pageNavigate('../Cart');
   }
 
+  const handleSubmitPayment = (e) => {
+    e.preventDefault();
+    setIsLoading(true);
+    setShowNotification(true);
+    setIsOrderPlaced(true)
+    // Simulating an asynchronous order placement
+    setTimeout(() => {
+      setIsLoading(false);
+     
+    }, 2000);
+
+    
+  }
+
+  useEffect(() => {
+    if (isOrderPlaced) {
+      // Scroll to the success message section after order placement
+      window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+    }
+  }, [isOrderPlaced]);
+
+
+
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -52,6 +87,7 @@ const Checkout = () => {
       city: '',
       postalCode: '',
       phoneNumber: '',
+      shippingMethod: ''
     });
   };
 
@@ -59,8 +95,25 @@ const Checkout = () => {
 
   return (
     <div className="checkout-container">
+      {isLoading && (
+        <>
+        <div className="loader-overlay">
+        <LazyLoader/>
+        </div>
+
+        </>
+      )}
+
+{!isLoading && showNotification && (
+        <div  className={`notification-banner ${isOrderPlaced ? 'show-card' : ''}`}>
+       <NotificationCard />
+     </div>
+        )}
+      {!isLoading && !showNotification && (
+        <>
       <div className='checkout-wrapper'>
-      <h1 className="checkout-heading">PetCare</h1>
+        <div className='heading'>
+      <h1 className="checkout-heading">PetCare</h1></div>
       <div className="checkout-links">
         <span className={`checkout-link ${activeStage === 0 ? 'active' : ''}`} onClick={() => handlePageNavigate()}>
           Cart
@@ -104,7 +157,7 @@ const Checkout = () => {
        </div>
        
        <h2 className="shipping-address-heading">Shipping Address</h2>
-       <div className="form-row inline-row">
+       < div className="form-row -inline">
          <input
            className="form-input-inline"
            type="text"
@@ -149,7 +202,7 @@ const Checkout = () => {
            placeholder="Apartment/Suite (optional)"
          />
        </div>
-       <div className="form-row">
+       <div className="form-row -inline">
          <input
            className="form-input-inline"
            type="text"
@@ -193,7 +246,130 @@ const Checkout = () => {
        
      </form>
       )}
-      {/* ...other stages */}
+     {activeStage === 2 && (
+          <div className="shipping-method">
+            <h2 className="shipping-method-heading">Shipping Method</h2>
+            <div className="shipping-options">
+              <div className="shipping-option first">
+                <div>
+                <input type="radio" id="pickup" name="shippingMethod" value="pickup"  onChange={handleInputChange}/>
+                <label htmlFor="pickup">Pickup</label>
+                </div>
+                {formData.shippingMethod === 'pickup' && (
+                <div>
+                  <p className="pickup-address-details">123 Main St, City, Postal Code</p>
+                </div>
+              )}
+              </div>
+              <div className="shipping-option">
+                <input type="radio" id="homeDelivery" name="shippingMethod" value="homeDelivery"   onChange={handleInputChange}/>
+                <label htmlFor="homeDelivery">Home Delivery</label>
+              </div>
+            </div>
+            <div className="pickup-address">
+             
+            </div>
+            <div className="submit-area">
+              <span className="return-link" onClick={() => handleStageChange(1)}>
+                &lt; Return to Customer Info
+              </span>
+              <button className="form-submit" type="button" onClick={() => handleStageChange(3)}>
+                Continue to Payment Method
+              </button>
+            </div>
+          </div>
+        )}
+        
+{activeStage === 3 && (
+        <form className="checkout-form" onSubmit={handleSubmitPayment}>
+          {/* Stage 3: Payment Method */}
+          <h2 className="payment-method-heading">Payment Method</h2>
+          <div className="payment-options">
+            <div className="payment-option">
+              <input
+                type="radio"
+                id="debitCard"
+                name="paymentMethod"
+                value="debitCard"
+                onChange={handleInputChange}
+              />
+              <label htmlFor="debitCard">Debit Card</label>
+            </div>
+            <div className="payment-option">
+              <input
+                type="radio"
+                id="cashOnDelivery"
+                name="paymentMethod"
+                value="cashOnDelivery"
+                onChange={handleInputChange}
+              />
+              <label htmlFor="cashOnDelivery">Cash on Delivery</label>
+            </div>
+          </div>
+
+          {/* Debit Card Details */}
+          {formData.paymentMethod === 'debitCard' && (
+            <div className="debit-card-details">
+              <div className="form-row">
+                <input
+                  className="form-input"
+                  type="text"
+                  id="cardNumber"
+                  name="cardNumber"
+                  value={formData.cardNumber}
+                  onChange={handleInputChange}
+                  placeholder="Card Number"
+                  required
+                />
+              </div>
+              <div className="form-row">
+                <input
+                  className="form-input"
+                  type="text"
+                  id="cardHolderName"
+                  name="cardHolderName"
+                  value={formData.cardHolderName}
+                  onChange={handleInputChange}
+                  placeholder="Card Holder Name"
+                  required
+                />
+              </div>
+              <div className="form-row -inline">
+                <input
+                  className="form-input-inline"
+                  type="text"
+                  id="expirationDate"
+                  name="expirationDate"
+                  value={formData.expirationDate}
+                  onChange={handleInputChange}
+                  placeholder="Expiration Date"
+                  required
+                />
+                <input
+                  className="form-input-inline"
+                  type="text"
+                  id="cvv"
+                  name="cvv"
+                  value={formData.cvv}
+                  onChange={handleInputChange}
+                  placeholder="CVV"
+                  required
+                />
+              </div>
+            </div>
+          )}
+
+          <div className="submit-area">
+            <span className="return-link" onClick={() => handleStageChange(2)}>
+              &lt; Return to Shipping Method
+            </span>
+            <button className="form-submit" type="submit">
+              Place Order
+            </button>
+          </div>
+        </form>
+      )}
+     
       </div>
       <div className="checkout-summary">
           <div className="checkout-summary-items">
@@ -207,16 +383,22 @@ const Checkout = () => {
                 </div>
               </div>
             ))}
+
           </div>
           <div className="checkout-summary-total">
-            <hr className="checkout-summary-divider" />
-            <p className="checkout-summary-subtotal">Subtotal: ${cartTotal}</p>
-            <p className="checkout-summary-shipping">Shipping: ${shippingCost}</p>
-            <hr className="checkout-summary-divider" />
-            <p className="checkout-summary-total-price">Total: ${(parseFloat(cartTotal) + parseFloat(shippingCost)).toFixed(2)}</p>
+      
+            <div className='checkout-price-div'> 
+            <div><p className="checkout-summary-subtotal">Subtotal:</p><p> ${cartTotal}</p></div> 
+            <div><p className="checkout-summary-shipping">Shipping:</p><p> ${shippingCost}</p></div>
+            </div>
+            <div className='total-div'>
+            <p className="checkout-summary-total-price">Total: </p><p>${(parseFloat(cartTotal) + parseFloat(shippingCost)).toFixed(2)}</p></div>
           </div>
         </div>
+        </>
+        )}
       </div>
+
   );
 };
 
