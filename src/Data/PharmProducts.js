@@ -2,6 +2,7 @@ export const PharmProducts = [
     {
       id: 1,
       category: 'Cats',
+      type: 'Pharmacy',
       products: [
         {
           id: 1,
@@ -52,6 +53,7 @@ export const PharmProducts = [
     {
       id: 2,
       category: 'Dogs',
+      type: 'Pharmacy',
       products: [
         {
           id: 1,
@@ -106,6 +108,7 @@ export const PharmProducts = [
     {
       id: 3,
       category: 'Birds',
+      type: 'Pharmacy',
       products: [
         {
           id: 1,
@@ -148,6 +151,7 @@ export const PharmProducts = [
     {
       id: 4,
       category: 'Fish',
+      type: 'Pharmacy',
       products: [
         {
           id: 1,

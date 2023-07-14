@@ -33,7 +33,7 @@ const NotificationCard = () => {
         <div className="notify-content">
           <span className="notify-title">Order validated</span>
           <p className="message">
-            Thank you for your purchase. Your package will be delivered within 2 days of your purchase.
+            Thank you for your purchase. Your package will be delivered within 2 to 3 working days! Happy Shopping :)
           </p>
         </div>
       </div>

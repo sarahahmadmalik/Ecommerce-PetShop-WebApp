@@ -9,13 +9,16 @@ export const CartProvider = ({ children }) => {
   
   const addToCart = (itemId, productCat, quantity, productType) => {
     let category ;
+   
     if(productType === 'Shop'){
+      console.log('ji')
       category = products.find((cat) => cat.category === productCat);
     }
     else if(productType === 'Pharmacy'){
       category = PharmProducts.find((cat) => cat.category === productCat);
     }
     
+    console.log('ji9')
     if (category) {
       const product = category.products.find((p) => p.id === itemId);
   
@@ -25,6 +28,7 @@ export const CartProvider = ({ children }) => {
           if (itemIndex !== -1) {
             // If item already exists in cart, update the quantity
             const updatedCartItems = prevCartItems.map((item, index) => {
+     
               if (index === itemIndex) {
                 const newQuantity = item.quantity + quantity;
                 if (newQuantity <= 0) {
@@ -35,7 +39,9 @@ export const CartProvider = ({ children }) => {
                   ...item,
                   quantity: newQuantity,
                 };
+               
               }
+              console.log('here2');
               return item;
             });
             console.log(updatedCartItems); // Log updatedCartItems
@@ -43,6 +49,7 @@ export const CartProvider = ({ children }) => {
           } else {
             // If item doesn't exist in cart, add it as a new item
             if (quantity <= 0) {
+              console.log('oi')
               // Do nothing if quantity is zero or less
               return prevCartItems;
             }

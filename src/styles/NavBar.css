@@ -194,6 +194,9 @@ nav .nav-menu  .nav-elements .nav-item a:hover {
   color: #555;
 }
 
+.empty-cart p{
+  text-align: left;
+}
 
 /* stroke */
 
@@ -357,6 +360,9 @@ nav.fill .nav-elements .nav-item :hover:after {
 .empty-cart p{
   font-size: 1rem;
   font-weight: lighter;
+  width: 100%;
+  text-align: left;
+  
 }
 
 @media screen and (max-width: 880px) {

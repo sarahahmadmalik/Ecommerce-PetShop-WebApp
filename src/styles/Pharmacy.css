@@ -68,3 +68,27 @@ letter-spacing: 2px;
 .Listings-pharmacy .listings-btns button:hover {
   background-color: #ccc;
 }
+
+.add-to-cart.similar{
+  font-size: .7rem;
+}
+
+.add-to-cart.similar svg{
+  height: 20px;
+  width: 20px;
+}
+
+.selected-item-pharma{
+  padding-top: 0;
+  margin-top: -7.56rem;
+}
+
+.selected-product-content.pharm{
+
+  margin-top: -3.45rem;
+}
+
+.selected-product-content.pharm h3{
+  margin-top: 0;
+  margin-bottom: 1.3rem;
+}

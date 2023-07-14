@@ -26,7 +26,7 @@ const Checkout = () => {
   const pageNavigate = useNavigate();
 
   const { cartItems, cartTotal, shippingCost, clearCart } = useContext(CartContext);
-  const [activeStage, setActiveStage] = useState(0);
+  const [activeStage, setActiveStage] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
   const [isOrderPlaced, setIsOrderPlaced] = useState(false);
   const [showNotification, setShowNotification] = useState(false);

@@ -45,7 +45,7 @@ const Cart = () => {
             <tbody>
             {cartItems.map((item) => (
   item.quantity > 0 && (
-    <tr key={item.id}>
+    <tr key={item.product.id}>
       <td className='cart-product'>
         <img src={item.product.image} alt="Product" />
         {item.product.title}
@@ -53,9 +53,9 @@ const Cart = () => {
       <td>${item.product.price}</td>
       <td>
         <div className='inc-dec'>
-          <button onClick={() => addToCart(item.product.id, item.product.category, -1)}>-</button>
+          <button onClick={() => addToCart(item.product.id, item.product.category, Number(item.quantity)-1, item.type)}>-</button>
           {item.quantity}
-          <button onClick={() => addToCart(item.product.id, item.product.category, 1)}>+</button>
+          <button onClick={() => addToCart(item.product.id, item.product.category, Number(item.quanity)+1,item.type)}>+</button>
         </div>
       </td>
       <td>${Number(item.product.price) * Number(item.quantity)}</td>

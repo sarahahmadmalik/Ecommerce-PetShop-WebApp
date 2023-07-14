@@ -160,7 +160,7 @@ function NavBar() {
                                 })
                             )}
                             { cartItems.length === 0 ?  (
-                                <div className='empty-cart'><p>No items in cart</p></div>
+                                <div className='empty-cart'><p id='empty-cart'>No items in cart</p></div>
                             )  : ( 
                             <div className='total'>
                             <p>Items Price: ${cartTotal}</p>
